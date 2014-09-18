@@ -1,0 +1,10 @@
+{
+    "name": "aligent/new-relic-fix",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Aligent NewRelicFix - Removes NewRelic's real user monitoring (RUM) JavaScript from certain actions.",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aligent_NewRelicFix>
+            <version>0.1.0</version>
+        </Aligent_NewRelicFix>
+    </modules>
+    <global>
+        <models>
+            <aligent_newrelicfix>
+                <class>Aligent_NewRelicFix_Model</class>
+                <resourceModel>aligent_newrelicfix_resource</resourceModel>
+            </aligent_newrelicfix>
+            <aligent_newrelicfix_resource>
+                <class>Aligent_NewRelicFix_Model_Resource</class>
+            </aligent_newrelicfix_resource>
+        </models>
+        <events>
+            <controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
+                <observers>
+                    <aligent_newrelicfix_observer>
+                        <class>aligent_newrelicfix/observer</class>
+                        <method>removeRumCode</method>
+                    </aligent_newrelicfix_observer>
+                </observers>
+            </controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
+        </events>
+
+    </global>
+</config>
