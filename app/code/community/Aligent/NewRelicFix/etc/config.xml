@@ -15,6 +15,11 @@
                 <class>Aligent_NewRelicFix_Model_Resource</class>
             </aligent_newrelicfix_resource>
         </models>
+        <helpers>
+            <aligent_newrelicfix>
+                <class>Aligent_NewRelicFix_Helper</class>
+            </aligent_newrelicfix>
+        </helpers>
         <events>
             <controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
                 <observers>
@@ -24,6 +29,14 @@
                     </aligent_newrelicfix_observer>
                 </observers>
             </controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <aligent_newrelicfix>
+                        <class>aligent_newrelicfix/observer</class>
+                        <method>adminhtmlControllerActionPredispatchStart</method>
+                    </aligent_newrelicfix>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
         </events>
 
     </global>

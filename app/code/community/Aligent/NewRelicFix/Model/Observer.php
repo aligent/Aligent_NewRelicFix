@@ -17,8 +17,15 @@ class Aligent_NewRelicFix_Model_Observer
 {
 
     public function removeRumCode($observer) {
-        if (extension_loaded('newrelic')) {
+        if (Mage::helper('aligent_newrelicfix')->isExtensionLoaded()) {
             newrelic_disable_autorum();
+        }
+    }
+
+    public function adminhtmlControllerActionPredispatchStart($event)
+    {
+        if (Mage::helper('aligent_newrelicfix')->isExtensionLoaded()) {
+            newrelic_ignore_transaction();
         }
     }
 }
