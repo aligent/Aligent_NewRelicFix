@@ -11,4 +11,16 @@ class Aligent_NewRelicFix_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         return $this->_bExtensionLoaded;
     }
+    public function reportException(Exception $e)
+    {
+        if ($this->isExtensionLoaded()){
+            newrelic_notice_error($e->getMessage(),$e);
+        }
+    }
+    public function reportParameters(array $aParam)
+    {
+        foreach ($aParam as $key => $value) {
+            newrelic_add_custom_parameter($key, $value);
+        }
+    }
 }
