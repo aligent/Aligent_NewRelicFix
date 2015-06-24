@@ -32,6 +32,7 @@ class NewRelicMagentoInstaller
         if (!$this->isReportPatched()){
             $vErrorReportPath = $this->getErrorReportPath();
             $vContents = file_get_contents($vErrorReportPath);
+            //add following line in errors/report.php
             $vContents.= "\n\n(new Aligent_NewRelicFix_Helper_Overwrite())->injectErrorReport(compact('e', 'reportData'));";
             file_put_contents($vErrorReportPath,$vContents);
         }
@@ -55,18 +56,24 @@ class NewRelicMagentoInstaller
 
     function getMagentoDirectory()
     {
+        //vendor folder
         $vVendorFolder = dirname(dirname(dirname(dirname(__FILE__))));
+        //Assume magento folder is parent of vendor, unless a different path is specified in composer.json
         $vMageFolder = dirname($vVendorFolder);
         $vComposerPath = $vMageFolder . '/composer.json';
         if (file_exists($vComposerPath) && is_readable($vComposerPath)) {
             $vComposer = @file_get_contents($vComposerPath);
             $aComposer = @json_decode($vComposer, true);
+            //detect if magento root directory is different than composer root directory
             if (isset($aComposer['extra']) && isset($aComposer['extra']['magento-root-dir'])) {
                 $vRootDir = $aComposer['extra']['magento-root-dir'];
+                //if not specified or if it is . composer root is magento root
                 if ($vRootDir && ($vRootDir != '.')) {
+                    //absolute magento path specified in composer.json
                     if (strpos($vRootDir, '/') === 0) {
                         $vMageFolder = $vRootDir;
                     }
+                    //relative path specified in composer.json
                     else {
                         $vMageFolder = rtrim($vMageFolder, '/') . '/' . $vRootDir;
                     }
@@ -75,15 +82,4 @@ class NewRelicMagentoInstaller
         }
         return $vMageFolder;
     }
-}
-
-/**
- * Although this file is never copied into Magento, still good to make sure it is not being
- */
-if (isset($_SERVER['SCRIPT_NAME'])
-    && (strpos(__FILE__, $_SERVER['SCRIPT_NAME']) !== false)
-    && (php_sapi_name() == 'cli')
-) {
-    $newRelicMagentoInstaller = new NewRelicMagentoInstaller();
-    $newRelicMagentoInstaller->install();
 }
