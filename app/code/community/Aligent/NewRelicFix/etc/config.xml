@@ -40,4 +40,45 @@
         </events>
 
     </global>
+    <frontend>
+        <routers>
+            <aligent_newrelicfix>
+                <use>standard</use>
+                <args>
+                    <module>Aligent_NewRelicFix</module>
+                    <frontName>aligent_new_relic_fix</frontName>
+                </args>
+            </aligent_newrelicfix>
+        </routers>
+    </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <aligent_newrelicfix>
+                            <title>Aligent New Relic Fix</title>
+                            <children>
+                                <aligent_newrelicfix translate="title" module="aligent_newrelicfix">
+                                    <title>Aligent new relic fix</title>
+                                </aligent_newrelicfix>
+                            </children>
+                        </aligent_newrelicfix>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <aligent_newrelicfix>
+                                            <title>Aligent new relic fix</title>
+                                            <sort_order>10</sort_order>
+                                        </aligent_newrelicfix>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>
