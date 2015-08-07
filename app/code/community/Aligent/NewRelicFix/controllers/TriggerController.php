@@ -4,7 +4,7 @@ class Aligent_NewRelicFix_TriggerController extends Mage_Core_Controller_Front_A
 {
     protected function isEnabled()
     {
-        return !Mage::getStoreConfigFlag('aligent_newrelicfix/trigger_error/disable');
+        return Mage::getStoreConfigFlag('aligent_newrelicfix/trigger_error/enable');
     }
 
     public function noticeAction()
@@ -38,8 +38,8 @@ class Aligent_NewRelicFix_TriggerController extends Mage_Core_Controller_Front_A
     public function fatalAction()
     {
         if ($this->isEnabled()) {
+            //a fatal error
             $nothing->method();
         }
     }
-
 }

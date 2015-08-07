@@ -81,4 +81,11 @@
             </resources>
         </acl>
     </adminhtml>
+    <default>
+        <aligent_newrelicfix>
+            <trigger_error>
+                <enable>1</enable>
+            </trigger_error>
+        </aligent_newrelicfix>
+    </default>
 </config>
