@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * system.xml
+ *
+ * @category  Aligent
+ * @package   Aligent_Storelocator
+ * @author    Brent Honeybone <brent@aligent.com.au>
+ * @copyright 2014 Aligent Consulting.
+ * @license   All Rights Reserved
+ * @link      http://www.aligent.com.au/
+ */
+-->
+<config>
+    <sections>
+        <aligent_newrelicfix translate="label">
+            <label>NewRelic</label>
+            <tab>aligent</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <trigger_error translate="label">
+                    <label>Trigger Error</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Trigger Error</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </enable>
+                    </fields>
+                </trigger_error>
+            </groups>
+        </aligent_newrelicfix>
+    </sections>
+</config>
