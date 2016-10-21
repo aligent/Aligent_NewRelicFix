@@ -7,7 +7,7 @@ See NR ticket #88658
 
 ## Injected code in error report
 * To inject error reporting add following line at the end of errors/report.php
-`(new Aligent_NewRelicFix_Helper_Overwrite())->injectErrorReport(compact('e', 'reportData'));`
+`@(new Aligent_NewRelicFix_Helper_Overwrite())->injectErrorReport(compact('e', 'reportData'));`
 * Upgrading magento can overwrite these settings. To avoid this add following in your composer.json
 
 ```

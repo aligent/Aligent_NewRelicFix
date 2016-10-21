@@ -33,7 +33,7 @@ class NewRelicMagentoInstaller
             $vErrorReportPath = $this->getErrorReportPath();
             $vContents = file_get_contents($vErrorReportPath);
             //add following line in errors/report.php
-            $vContents.= "\n\n(new Aligent_NewRelicFix_Helper_Overwrite())->injectErrorReport(compact('e', 'reportData'));";
+            $vContents.= "\n\n@(new Aligent_NewRelicFix_Helper_Overwrite())->injectErrorReport(compact('e', 'reportData'));";
             file_put_contents($vErrorReportPath,$vContents);
         }
     }
